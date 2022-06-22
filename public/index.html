@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script type="module" src="../src/index.ts"></script>
+  <link rel="stylesheet" href="game.scss" />
+</head>
+
+<body style="margin: 0;">
+  <div id="game" style="width: 100%; height: 100vh; box-sizing: border-box; padding: 15px;">
+    <div id="money" style="background-color: #813838; padding: 5px; width: fit-content; color: #fff;">
+      <span id="nics"></span>
+      <span id="nps"></span>
+    </div>
+
+    <div id="nic-head" style="display: flex; align-items: center; justify-content: center;">
+      <img src="images/nic-head.png" alt="Nic" width="650" height="500">
+    </div>
+
+    <section id="upgrades">
+      <article class="upgrade" data-name="cage">
+        <div class="media">
+          <img src="images/cage.jpg" alt="cage" width="150" />
+        </div>
+        <div class="details">
+          <p class="title">
+            Cages
+            <span class="quantity"></span>
+          </p>
+          <p class="value">+3 nics/s</p>
+        </div>
+      </article>
+    </section>
+  </div>
+</body>
+
+</html>
