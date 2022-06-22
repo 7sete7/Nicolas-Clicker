@@ -1,29 +1,33 @@
-import { Money } from '../types/money';
+import Money from '../components/money';
+import GameComponent from '../types/gameComponent';
 import EventManager from './EventManager';
 
-class Game {
+class Game implements GameComponent {
+	private FPS = 30;
+	private _intervalId?: NodeJS.Timer;
+
 	public events = new EventManager();
-	private money: Money = {
-		nics: 0,
-		nps: 0,
-	};
+	private _money = new Money();
 
-	public get nics() {
-		return this.money.nics;
+	get money(): Money {
+		return this._money;
 	}
 
-	public get nps() {
-		return this.money.nps;
+	start(): void {
+		this._money.start();
+
+		this._intervalId = setInterval(() => {
+			this.update();
+			setTimeout(() => this.render(), 1);
+		}, 1000 / this.FPS);
 	}
 
-	public incrementNics(amount: number) {
-		this.money.nics += amount;
-		this.events.dispatch('nics:change');
+	update() {
+		this._money.update();
 	}
 
-	public addNps(amount: number) {
-		this.money.nps += amount;
-		this.events.dispatch('nps:change');
+	render() {
+		this._money.render();
 	}
 }
 

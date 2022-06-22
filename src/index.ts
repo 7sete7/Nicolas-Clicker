@@ -4,20 +4,11 @@ import Game from './lib/Game';
 
 console.log('START');
 const game: Game = new Game();
-
-const renderProp = (id: string, value: any) => {
-	const nicsContainer = document.getElementById(id) as HTMLDivElement;
-	nicsContainer.innerHTML = String(value);
-};
-renderProp('nics', game.nics);
-renderProp('nps', game.nps);
-
-game.events.observe('nics:change', () => renderProp('nics', game.nics));
-game.events.observe('nps:change', () => renderProp('nps', game.nps));
+game.start();
 
 const headContainer = document.getElementById('nic-head') as HTMLDivElement;
 headContainer.addEventListener('click', () => {
-	game.incrementNics(1);
+	game.money.incrementNics(1);
 });
 
 interface config {
@@ -38,6 +29,6 @@ upgrades?.forEach(_upgrade => {
 		if (upgradeConfig[name] == null) return;
 
 		const config = upgradeConfig[name];
-		game.addNps(config.nps);
+		game.money.incrementNps(config.nps);
 	});
 });
