@@ -1,5 +1,5 @@
 export default interface GameComponent {
 	start(): void;
-	update(): void;
+	update(delta?: number): void;
 	render(): void;
 }

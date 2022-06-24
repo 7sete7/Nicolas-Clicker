@@ -1,4 +1,4 @@
-import GameComponent from '../types/gameComponent';
+import GameComponent from '../types/GameComponent';
 
 export default class Money implements GameComponent {
 	private _nps = 0;
@@ -28,10 +28,14 @@ export default class Money implements GameComponent {
 		this.npsElement = document.getElementById('nps') as HTMLDivElement;
 	}
 
-	update() {}
+	update(delta: number) {
+		if (this.nps > 0) {
+			this.incrementNics(this.nps * delta);
+		}
+	}
 
 	render() {
-		this.nicsElement.innerText = String(this.nics);
+		this.nicsElement.innerText = this.nics.toFixed(1);
 		this.npsElement.innerText = String(this.nps);
 	}
 }

@@ -1,5 +1,5 @@
 import Money from '../components/money';
-import GameComponent from '../types/gameComponent';
+import GameComponent from '../types/GameComponent';
 import EventManager from './EventManager';
 
 class Game implements GameComponent {
@@ -23,7 +23,9 @@ class Game implements GameComponent {
 	}
 
 	update() {
-		this._money.update();
+		const delta = 1 / this.FPS; // In seconds
+
+		this._money.update(delta);
 	}
 
 	render() {
