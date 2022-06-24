@@ -1,7 +1,6 @@
 {
 	"name": "nicolas-clicker",
 	"version": "0.0.1",
-	"main": "src/index.js",
 	"author": "Leonardo Viva <leonardogviva@gmail.com>",
 	"license": "MIT",
 	"engines": {
@@ -11,7 +10,9 @@
 	"scripts": {
 		"start": "parcel serve public/index.html --port 3000 --dist-dir dist",
 		"lint": "eslint src/**/*.ts --fix",
-		"prettier": "prettier --write src"
+		"prettier": "prettier --write src",
+		"build": "parcel build public/index.html",
+		"deploy": "./deploy.sh"
 	},
 	"devDependencies": {
 		"@parcel/transformer-sass": "^2.6.1",
@@ -34,7 +35,8 @@
 		"ts-node": "^10.7.0",
 		"typescript": "^4.6.3",
 		"url": "^0.11.0",
-		"util": "^0.12.4"
+		"util": "^0.12.4",
+		"gh-pages": "^4.0.0"
 	},
 	"dependencies": {
 		"fastify": "^3.28.0",
