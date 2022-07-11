@@ -1,6 +1,9 @@
 import Money from '../components/money';
+import Upgrade from '../components/upgrade';
 import GameComponent from '../types/GameComponent';
 import EventManager from './EventManager';
+
+import ALL_UPGRADES from '../config/upgrades';
 
 class Game implements GameComponent {
 	private FPS = 30;
@@ -8,6 +11,7 @@ class Game implements GameComponent {
 
 	public events = new EventManager();
 	private _money = new Money();
+	private _upgrades!: Upgrade[];
 
 	get money(): Money {
 		return this._money;
@@ -20,6 +24,8 @@ class Game implements GameComponent {
 			this.update();
 			setTimeout(() => this.render(), 1);
 		}, 1000 / this.FPS);
+
+		this._upgrades = ALL_UPGRADES.map(config => new Upgrade(config));
 	}
 
 	update() {
