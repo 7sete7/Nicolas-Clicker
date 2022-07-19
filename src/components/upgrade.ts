@@ -1,5 +1,6 @@
 import GameComponent from '../types/GameComponent';
 import { UpgradeConfig } from '../types/upgrade';
+import compileTemplateWith from '../utils/compileTemplate';
 
 export default class Upgrade implements GameComponent {
 	private _qtt: number = 0;
@@ -8,6 +9,10 @@ export default class Upgrade implements GameComponent {
 
 	public readonly name!: string;
 	public readonly description!: string;
+	public readonly image!: string;
+
+	private template!: string;
+	private element!: HTMLDivElement;
 
 	public get quantity() {
 		return this._qtt;
@@ -24,17 +29,24 @@ export default class Upgrade implements GameComponent {
 	constructor(config: UpgradeConfig) {
 		this.name = config.name;
 		this.description = config.description;
+		this.image = config.image;
 		this._price = config.price;
 		this._nps = config.nps;
+
+		this.template = compileTemplateWith('upgrade', config);
 	}
 
-	start(): void {
-		throw new Error('Method not implemented.');
+	async start(): Promise<void> {
+		// const props = { name: this.name, description: this.description, price: this.price, nps: this.nps, image: this.image };
+		// this.template = compileTemplateWith('upgrade', props);
+
+		const upgradesParent: HTMLDivElement = document.getElementById('upgrades') as HTMLDivElement;
+		this.element = document.createElement('div');
+		this.element.innerHTML = this.template;
+
+		upgradesParent.appendChild(this.element);
 	}
-	update(delta?: number | undefined): void {
-		throw new Error('Method not implemented.');
-	}
-	render(): void {
-		throw new Error('Method not implemented.');
-	}
+	update(delta?: number | undefined): void {}
+
+	render(): void {}
 }

@@ -6,6 +6,7 @@ const UPGRADES: UpgradeConfig[] = [
 		description: 'Não sei',
 		price: 30,
 		nps: 3,
+		image: 'cage.jpg',
 	},
 ];
 

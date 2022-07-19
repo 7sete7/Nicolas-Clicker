@@ -26,16 +26,19 @@ class Game implements GameComponent {
 		}, 1000 / this.FPS);
 
 		this._upgrades = ALL_UPGRADES.map(config => new Upgrade(config));
+		this._upgrades.forEach(upgrade => upgrade.start());
 	}
 
 	update() {
 		const delta = 1 / this.FPS; // In seconds
 
 		this._money.update(delta);
+		this._upgrades.forEach(upgrade => upgrade.update(delta));
 	}
 
 	render() {
 		this._money.render();
+		this._upgrades.forEach(upgrade => upgrade.render());
 	}
 }
 

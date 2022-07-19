@@ -3,4 +3,5 @@ export type UpgradeConfig = {
 	description: string;
 	price: number;
 	nps: number;
+	image: string;
 };
