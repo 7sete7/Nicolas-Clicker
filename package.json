@@ -2,20 +2,21 @@
 	"name": "nicolas-clicker",
 	"version": "0.0.1",
 	"author": "Leonardo Viva <leonardogviva@gmail.com>",
+	"private": true,
 	"license": "MIT",
 	"engines": {
 		"node": ">=16.0.0",
 		"yarn": ">=1.22.0"
 	},
 	"scripts": {
-		"start": "parcel serve public/index.html --port 3000 --dist-dir dist",
+		"start": "webpack serve --config ./webpack.config.js",
+		"start2": "parcel serve public/index.html --port 3000 --dist-dir dist",
 		"lint": "eslint src/**/*.ts --fix",
 		"prettier": "prettier --write src",
 		"build": "parcel build public/index.html",
 		"deploy": "./deploy.sh"
 	},
 	"devDependencies": {
-		"@parcel/transformer-sass": "^2.6.1",
 		"@tsconfig/node16": "^1.0.2",
 		"@types/node": "^17.0.27",
 		"@typescript-eslint/eslint-plugin": "^5.21.0",
@@ -24,22 +25,27 @@
 		"buffer": "^6.0.3",
 		"eslint": "^8.14.0",
 		"events": "^3.3.0",
+		"gh-pages": "^4.0.0",
+		"html-webpack-plugin": "^5.5.0",
 		"https-browserify": "^1.0.0",
-		"nodemon": "^2.0.15",
-		"parcel": "^2.6.1",
 		"prettier": "^2.6.2",
 		"process": "^0.11.10",
 		"querystring-es3": "^0.2.1",
+		"raw-loader": "^4.0.2",
 		"stream-browserify": "^3.0.0",
 		"stream-http": "^3.2.0",
+		"ts-loader": "^9.3.1",
 		"ts-node": "^10.7.0",
 		"typescript": "^4.6.3",
 		"url": "^0.11.0",
 		"util": "^0.12.4",
-		"gh-pages": "^4.0.0"
+		"webpack": "^5.73.0",
+		"webpack-cli": "^4.10.0",
+		"webpack-dev-server": "^4.9.3"
 	},
 	"dependencies": {
 		"fastify": "^3.28.0",
-		"fastify-plugin": "^3.0.1"
+		"fastify-plugin": "^3.0.1",
+		"handlebars": "^4.7.7"
 	}
 }
