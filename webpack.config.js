@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const DevServerPlugin = require('webpack-dev-server');
 
 module.exports = {
 	mode: 'development',
@@ -16,6 +15,11 @@ module.exports = {
 			{
 				test: /\.hbs$/,
 				use: 'raw-loader',
+				exclude: /node_modules/,
+			},
+			{
+				test: /\.scss/,
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 				exclude: /node_modules/,
 			},
 		],
@@ -41,17 +45,5 @@ module.exports = {
 			overlay: true,
 		},
 	},
-	plugins: [
-		new HtmlWebpackPlugin({ template: './public/index.html' }),
-		// new DevServerPlugin({
-		// 	port: 3000,
-		// 	static: {
-		// 		directory: path.resolve(__dirname, 'public'),
-		// 	},
-		// 	client: {
-		// 		progress: true,
-		// 		overlay: true,
-		// 	},
-		// }),
-	],
+	plugins: [new HtmlWebpackPlugin({ template: './public/index.html' })],
 };

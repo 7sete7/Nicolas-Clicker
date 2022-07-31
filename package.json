@@ -10,11 +10,9 @@
 	},
 	"scripts": {
 		"start": "webpack serve --config ./webpack.config.js",
-		"start2": "parcel serve public/index.html --port 3000 --dist-dir dist",
-		"lint": "eslint src/**/*.ts --fix",
 		"prettier": "prettier --write src",
-		"build": "parcel build public/index.html",
-		"deploy": "./deploy.sh"
+		"deploy": "./deploy.sh",
+		"build": "webpack build --mode development"
 	},
 	"devDependencies": {
 		"@tsconfig/node16": "^1.0.2",
@@ -23,6 +21,7 @@
 		"@typescript-eslint/parser": "^5.21.0",
 		"assert": "^2.0.0",
 		"buffer": "^6.0.3",
+		"css-loader": "^6.7.1",
 		"eslint": "^8.14.0",
 		"events": "^3.3.0",
 		"gh-pages": "^4.0.0",
@@ -32,8 +31,11 @@
 		"process": "^0.11.10",
 		"querystring-es3": "^0.2.1",
 		"raw-loader": "^4.0.2",
+		"sass": "^1.54.0",
+		"sass-loader": "^13.0.2",
 		"stream-browserify": "^3.0.0",
 		"stream-http": "^3.2.0",
+		"style-loader": "^3.3.1",
 		"ts-loader": "^9.3.1",
 		"ts-node": "^10.7.0",
 		"typescript": "^4.6.3",
