@@ -26,7 +26,10 @@ class Game implements GameComponent {
 		}, 1000 / this.FPS);
 
 		this._upgrades = ALL_UPGRADES.map(config => new Upgrade(config));
-		this._upgrades.forEach(upgrade => upgrade.start());
+		this._upgrades.forEach(upgrade => {
+			upgrade.start();
+			upgrade.setupListeners(this);
+		});
 	}
 
 	update() {
