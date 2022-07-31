@@ -37,11 +37,9 @@ export default class Upgrade implements GameComponent {
 	}
 
 	async start(): Promise<void> {
-		// const props = { name: this.name, description: this.description, price: this.price, nps: this.nps, image: this.image };
-		// this.template = compileTemplateWith('upgrade', props);
-
 		const upgradesParent: HTMLDivElement = document.getElementById('upgrades') as HTMLDivElement;
 		this.element = document.createElement('div');
+		this.element.style.display = 'contents';
 		this.element.innerHTML = this.template;
 
 		upgradesParent.appendChild(this.element);

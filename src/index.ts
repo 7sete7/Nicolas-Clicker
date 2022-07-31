@@ -1,5 +1,6 @@
 /// <reference lib="dom" />
 
+import '../public/game.scss';
 import Game from './lib/Game';
 
 console.log('START');
